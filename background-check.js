@@ -162,6 +162,8 @@
           url = url.replace(/"/g, '');
 
           list[e].img.src = url;
+          // Fix for "tainted canvas" https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image
++         list[e].img.crossOrigin = 'Anonymous';
           log('CSS Image - ' + url);
         } else {
           throw 'Element is not an <img> but does not have a background-image';
